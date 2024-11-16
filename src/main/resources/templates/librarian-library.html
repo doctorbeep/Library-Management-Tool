@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Librarian - Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(182, 208, 226);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        a {
+            color: rgb(0, 72, 176);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgb(0, 72, 176);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .logout {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            color: #f44336;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logout:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h2>Library: <span th:text="${library.name}">Library Name</span></h2>
+
+<a href="/librarian/library/book/add" style="display: block; text-align: center; margin: 10px 0; background-color: rgb(0, 72, 176); color: white; padding: 10px; text-decoration: none;">Add New Book</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Release Date</th>
+        <th>ISBN</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.releaseDate}"></td>
+        <td th:text="${book.ISBN}"></td>
+        <td class="action-links">
+            <a th:href="@{/librarian/library/book/edit/{id}(id=${book.id})}">Edit</a> |
+            <a th:href="@{/librarian/library/book/delete/{id}(id=${book.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a class="logout" href="/logout">Logout</a>
+</body>
+</html>

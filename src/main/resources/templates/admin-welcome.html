@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(182, 208, 226);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+         .button {
+            background-color: rgb(0, 72, 176);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: rgb(99, 113, 128);
+        }
+
+        .logout {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            color: #f44336;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logout:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h2>Welcome, Admin!</h2>
+<p>You have successfully logged in as an admin.</p>
+
+<div class="button-container">
+    <a href="/admin/librarians" class="button">Manage Librarians</a>
+    <a href="/admin/librarians/add" class="button">Add Librarian</a>
+</div>
+
+<div class="button-container">
+    <a href="/admin/libraries" class="button">Manage Libraries</a>
+    <a href="/admin/libraries/add" class="button">Add Libraries</a>
+</div>
+<a class="logout" href="/logout">Logout</a>
+</body>
+</html>

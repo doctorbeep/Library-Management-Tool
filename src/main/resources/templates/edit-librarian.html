@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Librarian</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(182, 208, 226);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        a {
+            color:  rgb(0, 72, 176);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+
+        .button, button {
+            background-color: rgb(0, 72, 176);
+            color: white;
+            border: none;
+            padding: 4px 15px;
+            margin: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: rgb(99, 113, 128);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h2>Edit Librarian</h2>
+
+<form th:action="@{/admin/librarians/{id}(id=${librarian.id})}" th:method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" th:value="${librarian.username}" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" th:value="${librarian.firstName}" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" th:value="${librarian.lastName}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:value="${librarian.email}" required>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" th:value="${librarian.phoneNumber}">
+
+    <label for="library">Library:</label>
+    <select id="library" name="libraryId">
+        <option value="">Select Library</option>
+        <option th:each="library : ${libraries}"
+                th:value="${library.id}"
+                th:text="${library.name}"
+                th:selected="${librarian.library != null and librarian.library.id == library.id}"></option>
+    </select>
+
+    <button type="submit">Update Librarian</button>
+</form>
+
+<a class="back-link" href="/admin/librarians">Back to Dashboard</a>
+</body>
+</html>
