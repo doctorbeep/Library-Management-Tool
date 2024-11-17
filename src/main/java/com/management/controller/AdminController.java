@@ -91,7 +91,7 @@ public class AdminController {
         return "redirect:/admin/librarians";
     }
 
-    @PostMapping("/librarians/delete/{id}")
+    @GetMapping("/librarians/delete/{id}")
     public String deleteLibrarian(@PathVariable Integer id) {
         librarianService.deleteLibrarian(id);
         return "redirect:/admin/librarians";
