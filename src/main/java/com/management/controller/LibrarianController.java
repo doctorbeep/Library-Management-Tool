@@ -107,4 +107,10 @@ public class LibrarianController {
 
         return "redirect:/librarian/library";
     }
+
+    @GetMapping("/library/book/delete/{id}")
+    public String deleteBook(@PathVariable Integer id) {
+        bookService.deleteBookById(id);
+        return "redirect:/librarian/library";
+    }
 }

@@ -32,4 +32,13 @@ public class Book {
     @JoinColumn(name = "library_id")
     @JsonBackReference
     private Library library;
+
+    public Book(String title, String author, String ISBN, Library library, LocalDate releaseDate ) {
+        this.id = id;
+        this.library = library;
+        this.releaseDate = releaseDate;
+        this.ISBN = ISBN;
+        this.author = author;
+        this.title = title;
+    }
 }

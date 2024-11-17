@@ -12,12 +12,14 @@ public class AuthController {
         return "login";
     }
 
+    //no longer used
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/auth/user/welcome")
     public String userWelcome() {
         return "user-welcome";
     }
 
+    //no longer used
     @PreAuthorize("hasRole('LIBRARIAN')")
     @GetMapping("/auth/librarian/welcome")
     public String librarianWelcome() {

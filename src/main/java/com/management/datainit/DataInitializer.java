@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -208,62 +209,89 @@ public class DataInitializer {
         user4.setRoles(Set.of(userRole));
         userRepository.save(user4);
 
-        // Books
-        Book book1 = new Book();
-        book1.setTitle("A Tale of Two Cities");
-        book1.setAuthor("Charles Dickens");
-        book1.setISBN("9781234567890");
-        book1.setLibrary(library1);
-        book1.setReleaseDate(LocalDate.of(1859, 1, 1));
-        bookRepository.save(book1);
+        // Books for Central City Library (library1)
+        bookRepository.saveAll(List.of(
+                new Book("Great Expectations", "Charles Dickens", "9781234567891", library1, LocalDate.of(1861, 1, 1)),
+                new Book("Moby-Dick", "Herman Melville", "9781234567892", library1, LocalDate.of(1851, 11, 14)),
+                new Book("1984", "George Orwell", "9780451524935", library1, LocalDate.of(1949, 6, 8)),
+                new Book("The Great Gatsby", "F. Scott Fitzgerald", "9780743273565", library1, LocalDate.of(1925, 4, 10)),
+                new Book("To Kill a Mockingbird", "Harper Lee", "9780061120084", library1, LocalDate.of(1960, 7, 11)),
+                new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488", library1, LocalDate.of(1951, 7, 16)),
+                new Book("Brave New World", "Aldous Huxley", "9780060850524", library1, LocalDate.of(1932, 1, 1)),
+                new Book("War and Peace", "Leo Tolstoy", "9780140447934", library1, LocalDate.of(1869, 1, 1)),
+                new Book("The Odyssey", "Homer", "9780140268867", library1, LocalDate.of(-700, 1, 1)),
+                new Book("The Iliad", "Homer", "9780140275360", library1, LocalDate.of(-750, 1, 1))
+        ));
 
-        Book book2 = new Book();
-        book2.setTitle("Luceafărul");
-        book2.setAuthor("Mihai Eminescu");
-        book2.setISBN("9786060000000");
-        book2.setLibrary(library3);
-        book2.setReleaseDate(LocalDate.of(1883, 1, 1));
-        bookRepository.save(book2);
+        // Books for Librarie Panciu (library2)
+        bookRepository.saveAll(List.of(
+                new Book("Madame Bovary", "Gustave Flaubert", "9780140449129", library2, LocalDate.of(1857, 1, 1)),
+                new Book("Les Misérables", "Victor Hugo", "9780140444308", library2, LocalDate.of(1862, 1, 1)),
+                new Book("Anna Karenina", "Leo Tolstoy", "9780143035008", library2, LocalDate.of(1877, 1, 1)),
+                new Book("Crime and Punishment", "Fyodor Dostoevsky", "9780486415871", library2, LocalDate.of(1866, 1, 1)),
+                new Book("The Brothers Karamazov", "Fyodor Dostoevsky", "9780374528379", library2, LocalDate.of(1880, 1, 1)),
+                new Book("Middlemarch", "George Eliot", "9780141439549", library2, LocalDate.of(1871, 1, 1)),
+                new Book("Don Quixote", "Miguel de Cervantes", "9780060934347", library2, LocalDate.of(1605, 1, 1)),
+                new Book("Ulysses", "James Joyce", "9780141182803", library2, LocalDate.of(1922, 1, 1)),
+                new Book("Wuthering Heights", "Emily Brontë", "9780141439556", library2, LocalDate.of(1847, 12, 1)),
+                new Book("Dracula", "Bram Stoker", "9780141439846", library2, LocalDate.of(1897, 1, 1))
+        ));
 
-        Book book3 = new Book();
-        book3.setTitle("Ion");
-        book3.setAuthor("Liviu Rebreanu");
-        book3.setISBN("9786062223334");
-        book3.setLibrary(library3);
-        book3.setReleaseDate(LocalDate.of(1920, 1, 1));
-        bookRepository.save(book3);
+        // Books for Biblioteca Națională a României (library3)
+        bookRepository.saveAll(List.of(
+                new Book("The Divine Comedy", "Dante Alighieri", "9780142437223", library3, LocalDate.of(1320, 1, 1)),
+                new Book("Gargantua and Pantagruel", "François Rabelais", "9780140445503", library3, LocalDate.of(1532, 1, 1)),
+                new Book("Faust", "Johann Wolfgang von Goethe", "9780140449013", library3, LocalDate.of(1808, 1, 1)),
+                new Book("The Sorrows of Young Werther", "Johann Wolfgang von Goethe", "9780140445039", library3, LocalDate.of(1774, 1, 1)),
+                new Book("Candide", "Voltaire", "9780140440041", library3, LocalDate.of(1759, 1, 1)),
+                new Book("Phedre", "Jean Racine", "9780140445923", library3, LocalDate.of(1677, 1, 1)),
+                new Book("The Canterbury Tales", "Geoffrey Chaucer", "9780140422344", library3, LocalDate.of(1400, 1, 1)),
+                new Book("Beowulf", "Unknown", "9780140449310", library3, LocalDate.of(1000, 1, 1)),
+                new Book("The Aeneid", "Virgil", "9780140449327", library3, LocalDate.of(-19, 1, 1)),
+                new Book("Leaves of Grass", "Walt Whitman", "9780140421996", library3, LocalDate.of(1855, 1, 1))
+        ));
 
-        Book book4 = new Book();
-        book4.setTitle("Pride and Prejudice");
-        book4.setAuthor("Jane Austen");
-        book4.setISBN("9780192833554");
-        book4.setLibrary(library2);
-        book4.setReleaseDate(LocalDate.of(1813, 1, 28));
-        bookRepository.save(book4);
+        // Books for Cluj County Library (library4)
+        bookRepository.saveAll(List.of(
+                new Book("The Art of War", "Sun Tzu", "9780486425573", library4, LocalDate.of(-500, 1, 1)),
+                new Book("The Prince", "Niccolò Machiavelli", "9780140449150", library4, LocalDate.of(1532, 1, 1)),
+                new Book("The Republic", "Plato", "9780140455113", library4, LocalDate.of(-380, 1, 1)),
+                new Book("Meditations", "Marcus Aurelius", "9780486298238", library4, LocalDate.of(180, 1, 1)),
+                new Book("The Federalist Papers", "Alexander Hamilton, James Madison, John Jay", "9780140444957", library4, LocalDate.of(1788, 1, 1)),
+                new Book("Common Sense", "Thomas Paine", "9780486296029", library4, LocalDate.of(1776, 1, 1)),
+                new Book("The Wealth of Nations", "Adam Smith", "9780140432084", library4, LocalDate.of(1776, 3, 9)),
+                new Book("Das Kapital", "Karl Marx", "9780140445688", library4, LocalDate.of(1867, 1, 1)),
+                new Book("The Rights of Man", "Thomas Paine", "9780486408935", library4, LocalDate.of(1791, 1, 1)),
+                new Book("Leviathan", "Thomas Hobbes", "9780140431957", library4, LocalDate.of(1651, 1, 1))
+        ));
 
-        Book book5 = new Book();
-        book5.setTitle("Amintiri din copilărie");
-        book5.setAuthor("Ion Creangă");
-        book5.setISBN("9789730000000");
-        book5.setLibrary(library5);
-        book5.setReleaseDate(LocalDate.of(1881, 1, 1));
-        bookRepository.save(book5);
+        // Books for Iași City Library (library5)
+        bookRepository.saveAll(List.of(
+                new Book("Heart of Darkness", "Joseph Conrad", "9780141441672", library5, LocalDate.of(1899, 1, 1)),
+                new Book("Frankenstein", "Mary Shelley", "9780141439471", library5, LocalDate.of(1818, 1, 1)),
+                new Book("The Picture of Dorian Gray", "Oscar Wilde", "9780141439570", library5, LocalDate.of(1890, 1, 1)),
+                new Book("The Strange Case of Dr. Jekyll and Mr. Hyde", "Robert Louis Stevenson", "9780486266886", library5, LocalDate.of(1886, 1, 1)),
+                new Book("The Adventures of Sherlock Holmes", "Arthur Conan Doyle", "9780486474915", library5, LocalDate.of(1892, 1, 1)),
+                new Book("Treasure Island", "Robert Louis Stevenson", "9780486275598", library5, LocalDate.of(1883, 1, 1)),
+                new Book("Alice's Adventures in Wonderland", "Lewis Carroll", "9780486275437", library5, LocalDate.of(1865, 1, 1)),
+                new Book("Through the Looking-Glass", "Lewis Carroll", "9780486275438", library5, LocalDate.of(1871, 1, 1)),
+                new Book("Robinson Crusoe", "Daniel Defoe", "9780486457291", library5, LocalDate.of(1719, 1, 1)),
+                new Book("Gulliver's Travels", "Jonathan Swift", "9780141439495", library5, LocalDate.of(1726, 1, 1))
+        ));
 
-        Book book6 = new Book();
-        book6.setTitle("Jane Eyre");
-        book6.setAuthor("Charlotte Brontë");
-        book6.setISBN("9780141441146");
-        book6.setLibrary(library6);
-        book6.setReleaseDate(LocalDate.of(1847, 10, 16));
-        bookRepository.save(book6);
-
-        Book book7 = new Book();
-        book7.setTitle("Enigma Otiliei");
-        book7.setAuthor("George Călinescu");
-        book7.setISBN("9789732200000");
-        book7.setLibrary(library4);
-        book7.setReleaseDate(LocalDate.of(1938, 1, 1));
-        bookRepository.save(book7);
+        // Books for Sibiu County Library (library6)
+        bookRepository.saveAll(List.of(
+                new Book("Pride and Prejudice", "Jane Austen", "9780141439518", library6, LocalDate.of(1813, 1, 28)),
+                new Book("Sense and Sensibility", "Jane Austen", "9780141439839", library6, LocalDate.of(1811, 10, 30)),
+                new Book("Jane Eyre", "Charlotte Brontë", "9780141441146", library6, LocalDate.of(1847, 10, 16)),
+                new Book("Mansfield Park", "Jane Austen", "9780141439808", library6, LocalDate.of(1814, 7, 1)),
+                new Book("Emma", "Jane Austen", "9780141439587", library6, LocalDate.of(1815, 12, 25)),
+                new Book("Northanger Abbey", "Jane Austen", "9780141439792", library6, LocalDate.of(1817, 12, 1)),
+                new Book("Persuasion", "Jane Austen", "9780141439563", library6, LocalDate.of(1817, 12, 20)),
+                new Book("The Tenant of Wildfell Hall", "Anne Brontë", "9780141439815", library6, LocalDate.of(1848, 6, 1)),
+                new Book("Villette", "Charlotte Brontë", "9780141439464", library6, LocalDate.of(1853, 1, 1)),
+                new Book("Agnes Grey", "Anne Brontë", "9780141439648", library6, LocalDate.of(1847, 1, 1))
+        ));
     }
 
 }

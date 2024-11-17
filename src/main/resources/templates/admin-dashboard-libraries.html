@@ -100,8 +100,8 @@
         <td th:text="${library.city}"></td>
         <td th:text="${library.books != null ? library.books.size() : 0}"></td>
         <td class="action-links">
-            <a th:href="@{/admin/libraries/edit/{id}(id=${library.id})}">Edit</a> |
-            <a th:href="@{/admin/libraries/delete/{id}(id=${library.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+            <a th:href="@{/admin/libraries/edit/{id}(id=${library.id})}">Edit</a>
+<!--            <a th:href="@{/admin/libraries/delete/{id}(id=${library.id})}" onclick="return confirm('Are you sure?')">Delete</a>-->
         </td>
     </tr>
     </tbody>

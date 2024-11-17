@@ -3,6 +3,7 @@ package com.management.controller;
 import com.management.entity.Librarian;
 import com.management.entity.Library;
 import com.management.exceptions.LibraryNotFoundException;
+import com.management.service.BookService;
 import com.management.service.LibrarianService;
 import com.management.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,9 +91,7 @@ public class AdminController {
         return "redirect:/admin/librarians";
     }
 
-
-
-    @GetMapping("/librarians/delete/{id}")
+    @PostMapping("/librarians/delete/{id}")
     public String deleteLibrarian(@PathVariable Integer id) {
         librarianService.deleteLibrarian(id);
         return "redirect:/admin/librarians";
@@ -139,9 +138,13 @@ public class AdminController {
         return "redirect:/admin/libraries";
     }
 
-    @GetMapping("/libraries/delete/{id}")
+/*    @GetMapping("/libraries/delete/{id}")
     public String deleteLibrary(@PathVariable Integer id) {
+        List<Book> libraryBooks = bookService.getByLibrary(libraryService.getLibraryById(id).orElse(null));
+        for(Book book : libraryBooks){
+            bookService.deleteBookById(book.getId());
+        }
         libraryService.deleteLibrary(id);
         return "redirect:/admin/libraries";
-    }
+   }*/
 }
